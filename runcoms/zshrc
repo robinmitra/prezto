@@ -3,15 +3,59 @@
 #
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Robin Mitra <robinmitra1@gmail.com>
 #
 
-# Source Prezto.
+##########
+# Prezto #
+##########
+
+# Initialise Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+##########
+# Custom #
+##########
+
+source "${HOME}/.functions.sh"
+source "${HOME}/.aliases.sh"
+source "${HOME}/.key-bindings.sh"
+
+#######
+# FZF #
+#######
+
+# Initialise FZF.
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Use 'fd' as the default source for FZF. Note that 'fd' doesn't include hidden and ignored files, by default.
+export FZF_DEFAULT_COMMAND='fd --type f'
+# export FZF_DEFAULT_COMMAND='fd --type f --hidden -follow --exclude .git' # use this alternative to include hidden and ignored files.
+
+# Use 'fd' for Ctrl+t as well.
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Show a tree view on the right of entry selected, when using Esc+c.
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'" 
+
+# Show a tree view on the right of entry selected, when using Ctrl+t.
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+
+# Show a preview of command (useful for viewing longer commands going beyond the screen) when '?' is pressed, when using Ctrl+r.
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+
+#############
+# Languages #
+#############
+
+# Ruby
 eval "$(rbenv init -)"
 
+# Node.js
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
+
+# Go
+[[ -s "/Users/robinmitra/.gvm/scripts/gvm" ]] && source "/Users/robinmitra/.gvm/scripts/gvm"
