@@ -7,6 +7,14 @@
 #
 
 ##########
+# Custom #
+##########
+
+source "${HOME}/.aliases.sh"
+source "${HOME}/.functions.sh"
+source "${HOME}/.key-bindings.sh"
+
+##########
 # Prezto #
 ##########
 
@@ -14,14 +22,6 @@
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
-
-##########
-# Custom #
-##########
-
-source "${HOME}/.functions.sh"
-source "${HOME}/.aliases.sh"
-source "${HOME}/.key-bindings.sh"
 
 #######
 # FZF #
@@ -31,8 +31,9 @@ source "${HOME}/.key-bindings.sh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Use 'fd' as the default source for FZF. Note that 'fd' doesn't include hidden and ignored files, by default.
-export FZF_DEFAULT_COMMAND='fd --type f'
-# export FZF_DEFAULT_COMMAND='fd --type f --hidden -follow --exclude .git' # use this alternative to include hidden and ignored files.
+# export FZF_DEFAULT_COMMAND='fd --type f' # Use this to exclude hidden and ignored files.
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --no-ignore --exclude .git' # Use this alternative to include hidden files and only exclude '.git' directory.
+#export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --no-ignore' # Use this alternative to include everything.
 
 # Use 'fd' for Ctrl+t as well.
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -62,3 +63,13 @@ export NVM_DIR="$HOME/.nvm"
 
 # Python
 eval "$(pyenv init -)"
+
+##########
+# Others #
+##########
+
+eval $(thefuck --alias)
+
+# Tells `pinentry`, the software GPG uses for entering passcode, where to prompt for passcode.
+# This will allow signing commits from command line Git.
+export GPG_TTY=$(tty)
