@@ -47,6 +47,12 @@ export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat 
 # Show a preview of command (useful for viewing longer commands going beyond the screen) when '?' is pressed, when using Ctrl+r.
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 
+#######
+# GRC #
+#######
+
+[[ -s "/usr/local/etc/grc.zsh" ]] && source /usr/local/etc/grc.zsh
+
 #############
 # Languages #
 #############
