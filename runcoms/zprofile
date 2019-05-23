@@ -50,6 +50,7 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 path=(
   $ANDROID_HOME/tools
   $ANDROID_HOME/platform-tools
+  $HOME/Downloads/flutter/bin
   /usr/local/{bin,sbin}
   $JAVA_HOME/bin
   $path
