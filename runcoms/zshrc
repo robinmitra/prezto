@@ -14,6 +14,11 @@ source "${HOME}/.aliases.sh"
 source "${HOME}/.functions.sh"
 source "${HOME}/.key-bindings.sh"
 
+# Optional work-specific stuff.
+if [[ -s "${HOME}/.work.sh" ]]; then
+  source "${HOME}/.work.sh"
+fi
+
 ##########
 # Prezto #
 ##########
