@@ -44,12 +44,14 @@ typeset -gU cdpath fpath mailpath path
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export FIREFOX_PATH=$HOME/Downloads/Firefox.app/Contents/MacOS/firefox-bin
+export GO_HOME=$HOME/go
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Set the list of directories that Zsh searches for programs.
 path=(
   $ANDROID_HOME/tools
   $ANDROID_HOME/platform-tools
+  $GO_HOME/bin
   $HOME/Downloads/flutter/bin
   /usr/local/{bin,sbin}
   $JAVA_HOME/bin
