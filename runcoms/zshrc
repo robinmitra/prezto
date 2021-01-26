@@ -93,6 +93,8 @@ eval "$(pyenv init -)"
 
 eval $(thefuck --alias)
 
+source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
+
 # Tells `pinentry`, the software GPG uses for entering passcode, where to prompt for passcode.
 # This will allow signing commits from command line Git.
 export GPG_TTY=$(tty)
