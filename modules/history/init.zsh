@@ -29,7 +29,7 @@ setopt HIST_BEEP              # Beep when accessing non-existent history.
 zstyle -s ':prezto:module:history' histfile 'HISTFILE' \
     || HISTFILE="${HISTFILE:-${ZDOTDIR:-$HOME}/.zsh_history}" # The path to the history file.
 zstyle -s ':prezto:module:history' histsize 'HISTSIZE' \
-    || HISTSIZE=10000                                         # The maximum number of events to save in the internal history.
+    || HISTSIZE=100000                                        # The maximum number of events to save in the internal history.
 zstyle -s ':prezto:module:history' savehist 'SAVEHIST' \
     || SAVEHIST=$HISTSIZE                                     # The maximum number of events to save in the history file.
 
