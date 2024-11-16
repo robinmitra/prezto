@@ -26,6 +26,9 @@ fi
 if [[ -z "$PAGER" ]]; then
   export PAGER='less'
 fi
+if [[ -z "$REACT_EDITOR" ]]; then
+  export REACT_EDITOR='ws'
+fi
 
 #
 # Language
