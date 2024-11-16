@@ -55,15 +55,23 @@ export FIREFOX_PATH=$HOME/Downloads/Firefox.app/Contents/MacOS/firefox-bin
 export GO_HOME=$HOME/go
 export JAVA_HOME=$(/usr/libexec/java_home)
 
-# Set the list of directories that Zsh searches for programs.
+# Set the list of directories that Zsh searches for programs (in higher to lower precendence order).
 path=(
+  /usr/local/opt/gnu-sed/libexec/gnubin
+
+  # React Native
+  $ANDROID_HOME/emulator
   $ANDROID_HOME/tools
+  $ANDROID_HOME/tools/bin
   $ANDROID_HOME/platform-tools
+
   $HOME/{,s}bin(N)
-  $GO_HOME/bin
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
+
+  $GO_HOME/bin
   $JAVA_HOME/bin
+
   $path
 )
 
