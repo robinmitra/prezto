@@ -50,11 +50,18 @@ typeset -gU cdpath fpath mailpath path
 #   $cdpath
 # )
 
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export FIREFOX_PATH=$HOME/Downloads/Firefox.app/Contents/MacOS/firefox-bin
+export JAVA_HOME=$(/usr/libexec/java_home)
+
 # Set the list of directories that Zsh searches for programs.
 path=(
+  $ANDROID_HOME/tools
+  $ANDROID_HOME/platform-tools
   $HOME/{,s}bin(N)
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
+  $JAVA_HOME/bin
   $path
 )
 
