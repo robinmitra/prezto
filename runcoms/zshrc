@@ -33,7 +33,7 @@ fi
 #######
 
 # Initialise FZF.
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 # Use 'fd' as the default source for FZF. Note that 'fd' doesn't include hidden and ignored files, by default.
 # export FZF_DEFAULT_COMMAND='fd --type f' # Use this to exclude hidden and ignored files.
@@ -76,7 +76,8 @@ eval "$(rbenv init -)"
 
 # Node.js
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Go
 [[ -s "/Users/robinmitra/.gvm/scripts/gvm" ]] && source "/Users/robinmitra/.gvm/scripts/gvm"
@@ -91,10 +92,24 @@ eval "$(pyenv init -)"
 # Others #
 ##########
 
+# command-not-found
+HOMEBREW_COMMAND_NOT_FOUND_HANDLER="$(brew --repository)/Library/Homebrew/command-not-found/handler.sh"
+if [ -f "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER" ]; then
+  source "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER";
+fi
+
+# ngrok
+if command -v ngrok &>/dev/null; then
+  eval "$(ngrok completion)"
+fi
+
 eval $(thefuck --alias)
 
-source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
+source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
 # Tells `pinentry`, the software GPG uses for entering passcode, where to prompt for passcode.
 # This will allow signing commits from command line Git.
 export GPG_TTY=$(tty)
+
+# For uv
+. "$HOME/.local/bin/env"
